@@ -1,0 +1,52 @@
+CREATE TABLE groep319.users
+(   user_id integer NOT NULL DEFAULT nextval('groep319.user_id_seq'::regclass),
+    email character varying COLLATE pg_catalog."default" NOT NULL UNIQUE,
+    firstName character varying COLLATE pg_catalog."default",
+     lastName character varying COLLATE pg_catalog."default",
+    password character varying COLLATE pg_catalog."default",
+     Team character varying COLLATE pg_catalog."default",
+    Role character varying COLLATE pg_catalog."default",
+    CONSTRAINT user_pkey PRIMARY KEY (user_id, email)
+);
+
+GRANT ALL ON SCHEMA groep319 to local_u0015529;
+GRANT ALL ON SEQUENCE groep319.user_id_seq to local_u0015529;
+GRANT ALL ON TABLE groep319.users to local_u0015529;
+
+GRANT ALL ON SCHEMA groep319 to local_u0034562;
+GRANT ALL ON SEQUENCE groep319.user_id_seq to local_u0034562;
+GRANT ALL ON TABLE groep319.users to local_u0034562;
+
+GRANT ALL ON SCHEMA groep319 to local_r0843312;
+GRANT ALL ON SEQUENCE groep319.user_id_seq to local_r0843312;
+GRANT ALL ON TABLE groep319.users to local_r0843312;
+
+GRANT ALL ON SCHEMA groep319 to local_r0887748;
+GRANT ALL ON SEQUENCE groep319.user_id_seq to local_r0887748;
+GRANT ALL ON TABLE groep319.users to local_r0887748;
+
+INSERT INTO groep319.users (email, firstname, lastname, password, team, role) VALUES ('director@ucll.be', 'Ad', 'Director', 't', 'ALPHA', 'ADMIN');
+INSERT INTO groep319.users (email, firstname, lastname, password, team, role) VALUES ('teamleader@ucll.be', 'Jef', 'Vermeulen', 't', 'BETA', 'TEAMLEADER');
+INSERT INTO groep319.users (email, firstname, lastname, password, team, role) VALUES ('employee@ucll.be', 'Kef', 'Vermeulen', 't', 'BETA', 'EMPLOYEE');
+
+
+CREATE TABLE groep319.projects
+(   project_id integer NOT NULL DEFAULT nextval('groep319.project_id_seq'::regclass),
+    name character varying COLLATE pg_catalog."default",
+    Team character varying COLLATE pg_catalog."default",
+    start date NOT NULL,
+    "end" date NOT NULL,
+    CONSTRAINT project_pkey PRIMARY KEY (project_id, name)
+);
+
+GRANT ALL ON TABLE groep319.projects to local_u0015529;
+GRANT ALL ON TABLE groep319.projects to local_u0034562;
+GRANT ALL ON TABLE groep319.projects to local_r0843312;
+GRANT ALL ON TABLE groep319.projects to local_r0887748;
+
+GRANT ALL ON SEQUENCE groep319.project_id_seq to local_r0843312;
+GRANT ALL ON SEQUENCE groep319.project_id_seq to local_r0887748;
+GRANT ALL ON SEQUENCE groep319.project_id_seq to local_u0034562;
+GRANT ALL ON SEQUENCE groep319.project_id_seq to local_u0015529;
+
+INSERT INTO groep319.projects (name, team, start, "end") VALUES ('Project 1', 'ALPHA', '2018-01-01', '2018-01-31');
